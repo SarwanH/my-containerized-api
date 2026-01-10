@@ -25,34 +25,42 @@ I built and deployed a **REST API to AWS cloud infrastructure** using modern Dev
 
 ### Local Development & API Response
 ![Local API Running](screenshots/01-local-api.png)
+
 *Left: Terminal showing Node.js server startup. Right: Browser displaying the REST API's JSON response with all available endpoints*
 
 ### Docker Containerization
 ![Docker Build Success](screenshots/02-docker-build.png)
+
 *Docker build process showing successful image creation for AMD64 platform with all layers cached and optimized*
 
 ### AWS ECR - Container Registry
 ![ECR Repository](screenshots/03-ecr-repository.png)
+
 *Amazon ECR showing the pushed Docker image (v1) ready for deployment to ECS*
 
 ### AWS ECS - Cluster Overview
 ![ECS Cluster](screenshots/04-ecs-cluster.png)
+
 *ECS cluster dashboard showing 1 active service with 1 running task and healthy status*
 
 ### AWS ECS - Task Details
 ![ECS Service Running](screenshots/05-ecs-task.png)
+
 *Detailed view of the running Fargate task with "Healthy" status, showing the task is successfully serving traffic*
 
 ### Live API - Production Deployment
 ![API Live Response](screenshots/06-api-live.png)
+
 *The deployed API responding to requests via its public IP, serving the welcome message and endpoint directory*
 
 ### AWS CloudWatch - Logging
 ![CloudWatch Logs](screenshots/07-cloudwatch.png)
+
 *CloudWatch log streams showing real-time application logs from the containerized API with 74 log streams tracked*
 
 ### Health Check Endpoint
 ![Health Check](screenshots/08-health-check.png)
+
 *The /health endpoint returning status, timestamp, and uptime metrics for monitoring and load balancer health checks*
 
 > **Note:** Demo was running on AWS but is currently stopped to avoid ongoing charges. Can be redeployed in minutes for interviews.
