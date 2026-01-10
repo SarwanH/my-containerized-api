@@ -1,0 +1,14 @@
+{
+  "cluster": "my-api-cluster",
+  "serviceName": "my-api-service",
+  "taskDefinition": "my-api-task",
+  "desiredCount": 1,
+  "launchType": "FARGATE",
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-083b4a87af1f9332f", "subnet-09f667d5eaa4142f6"],
+      "securityGroups": ["sg-0c4f9d0fe699abb47"],
+      "assignPublicIp": "ENABLED"
+    }
+  }
+}
