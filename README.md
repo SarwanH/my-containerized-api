@@ -6,22 +6,22 @@
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)](https://www.docker.com/)
 [![Node.js](https://img.shields.io/badge/Node.js-18-339933?logo=node.js)](https://nodejs.org/)
 
-## 📖 Project Overview
+## Project Overview
 
 I built and deployed a **REST API to AWS cloud infrastructure** using modern DevOps practices. This project showcases my ability to:
 
-- ✅ Design and build REST APIs with Node.js/Express
-- ✅ Containerize applications with Docker
-- ✅ Deploy to cloud infrastructure (AWS ECS Fargate)
-- ✅ Implement health monitoring and auto-healing
-- ✅ Configure cloud networking and security
-- ✅ Troubleshoot production deployment issues
+- Design and build REST APIs with Node.js/Express
+- Containerize applications with Docker
+- Deploy to cloud infrastructure (AWS ECS Fargate)
+- Implement health monitoring and auto-healing
+- Configure cloud networking and security
+- Troubleshoot production deployment issues
 
 **Key Achievement:** Successfully debugged and resolved platform architecture mismatch between ARM64 (Apple Silicon) and AMD64 (AWS) during deployment.
 
 ---
 
-## 🎥 Project Demonstration
+## Project Demonstration
 
 ### Local Development & API Response
 ![Local API Running](screenshots/01-local-api.png)
@@ -67,7 +67,7 @@ I built and deployed a **REST API to AWS cloud infrastructure** using modern Dev
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌──────────────────────────────────────────────────┐
@@ -104,7 +104,7 @@ Infrastructure Components:
 
 ---
 
-## 💼 Skills Demonstrated
+## Skills Demonstrated
 
 ### Cloud & DevOps
 - **AWS Services:** ECS Fargate, ECR, VPC, Security Groups, IAM, CloudWatch
@@ -126,7 +126,7 @@ Infrastructure Components:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Run Locally
 ```bash
@@ -149,7 +149,7 @@ docker run -p 3000:3000 my-api
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -184,7 +184,7 @@ docker run -p 3000:3000 my-api
 
 ---
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 
 ### Containerization
 - **Base Image:** `node:18-alpine` (lightweight 40MB base)
@@ -211,42 +211,7 @@ docker run -p 3000:3000 my-api
 
 ---
 
-## 🎓 Key Learnings
-
-### Challenge 1: Platform Architecture Mismatch
-**Problem:** Docker image built on Apple Silicon (ARM64) failed to run on AWS ECS (AMD64)
-
-**Error:** `CannotPullContainerError: image Manifest does not contain descriptor matching platform 'linux/amd64'`
-
-**Solution:** Used Docker's `--platform linux/amd64` flag to cross-compile for the correct architecture:
-```bash
-docker build --platform linux/amd64 -t my-api:v1 .
-```
-
-**Learning:** Understanding platform compatibility is crucial in modern containerized deployments. Learned to identify architecture mismatches through CloudWatch logs and ECS service events.
-
-### Challenge 2: AWS Service Limits
-**Problem:** New AWS account had restrictions on creating Application Load Balancers
-
-**Error:** `This AWS account currently does not support creating load balancers`
-
-**Solution:** Adapted architecture to use direct ECS service with public IP assignment instead of ALB
-
-**Learning:** Flexibility in cloud architecture design and cost optimization. Understood trade-offs between different deployment patterns.
-
-### Challenge 3: Container Pull Errors
-**Problem:** ECS couldn't pull the Docker image from ECR initially
-
-**Solution:** 
-- Verified ECR permissions and task execution role policies
-- Ensured correct image tagging format
-- Confirmed IAM role had AmazonECSTaskExecutionRolePolicy attached
-
-**Learning:** Deep understanding of AWS IAM, ECR authentication, and ECS task execution roles
-
----
-
-## 📊 Project Metrics
+## Project Metrics
 
 - **Container Size:** 180MB (optimized with Alpine Linux)
 - **Cold Start Time:** ~60 seconds
@@ -259,7 +224,7 @@ docker build --platform linux/amd64 -t my-api:v1 .
 
 ---
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 **High Priority:**
 - [ ] CI/CD Pipeline with GitHub Actions (automated testing & deployment)
@@ -282,32 +247,7 @@ docker build --platform linux/amd64 -t my-api:v1 .
 
 ---
 
-## 📁 Project Structure
-
-```
-my-containerized-api/
-├── server.js                 # Express API application
-├── package.json              # Dependencies and scripts
-├── Dockerfile                # Container build instructions
-├── .dockerignore            # Docker build exclusions
-├── task-definition.json     # ECS task configuration
-├── service.json             # ECS service configuration
-├── trust-policy.json        # IAM trust policy
-├── screenshots/             # Demo screenshots
-│   ├── 01-local-api.png
-│   ├── 02-docker-build.png
-│   ├── 03-ecr-repository.png
-│   ├── 04-ecs-cluster.png
-│   ├── 05-ecs-task.png
-│   ├── 06-api-live.png
-│   ├── 07-cloudwatch.png
-│   └── 08-health-check.png
-└── README.md                # This file
-```
-
----
-
-## 🧹 Cost Management
+## Cost Management
 
 This project uses AWS Free Tier eligible services:
 - **ECS Fargate:** Charged per second when running (~$15/month if running 24/7)
@@ -318,10 +258,10 @@ This project uses AWS Free Tier eligible services:
 **Current Status:** Stopped to avoid charges. Total cost while running was approximately $0.50/day.
 
 To minimize costs, I implemented:
-- ✅ Proper resource cleanup scripts
-- ✅ Minimal container resources (256 CPU, 512MB RAM)
-- ✅ On-demand deployment for demos
-- ✅ Automated shutdown procedures
+- Proper resource cleanup scripts
+- Minimal container resources (256 CPU, 512MB RAM)
+- On-demand deployment for demos
+- Automated shutdown procedures
 
 ### Cleanup Commands
 ```bash
@@ -334,12 +274,6 @@ aws ecs delete-cluster --cluster my-api-cluster --region us-east-1
 # Delete ECR images (optional, keeps repository)
 aws ecr batch-delete-image --repository-name my-api --region us-east-1 --image-ids imageTag=v1
 ```
-
----
-
-## 📄 License
-
-MIT License - This project is open source and available for educational purposes.
 
 ---
 
